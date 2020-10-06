@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS library;
+
+DROP TYPE IF EXISTS genere_list;
