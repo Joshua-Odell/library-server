@@ -16,6 +16,7 @@ const WishService = {
 	},
 	deleteBook(knex, id) {
 		//
+		//
 	},
 };
 module.exports = WishService;
