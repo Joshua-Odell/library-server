@@ -8,7 +8,7 @@ const libraryRouter = express.Router();
 const bodyParser = express.json();
 
 libraryRouter
-	.route('/')
+	.route('/library')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		// this check is an uncessary placeholder for some data validation
@@ -33,7 +33,7 @@ libraryRouter
 	});
 
 libraryRouter
-	.route('/:id')
+	.route('/library/:id')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		LibraryService.getBookById(knexInstance, req.params.id)
@@ -47,6 +47,14 @@ libraryRouter
 		const { lent, completed } = req.body;
 		const updatedBook = { lent, completed };
 		LibraryService.updateBook(knexInstance, req.params.id, updatedBook)
+			.then(() => {
+				return res.status(200);
+			})
+			.catch(next);
+	})
+	.delete((req, res, next) => {
+		const knexInstance = req.app.get('db');
+		LibraryService.deleteBook(knexInstance, req.params.id)
 			.then(() => {
 				return res.status(200);
 			})

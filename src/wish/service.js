@@ -15,8 +15,7 @@ const WishService = {
 		return knex.select('*').from('wish').where('id', id);
 	},
 	deleteBook(knex, id) {
-		//
-		//
+		return knex.from('wish').where('id', id).del();
 	},
 };
 module.exports = WishService;

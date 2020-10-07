@@ -18,7 +18,7 @@ const LibraryService = {
 		return knex('library').where({ id }).update(updatedBook);
 	},
 	deleteBook(knex, id) {
-		//
+		return knex.from('library').where('id', id).del();
 	},
 };
 module.exports = LibraryService;
