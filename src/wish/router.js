@@ -32,13 +32,23 @@ wishRouter
 			.catch(next);
 	});
 
-wishRouter.route('/wish/:id').get((req, res, next) => {
-	const knexInstance = req.app.get('db');
-	WishService.getBookById(knexInstance, req.params.id)
-		.then((book) => {
-			res.status(200).json(book);
-		})
-		.catch(next);
-});
+wishRouter
+	.route('/wish/:id')
+	.get((req, res, next) => {
+		const knexInstance = req.app.get('db');
+		WishService.getBookById(knexInstance, req.params.id)
+			.then((book) => {
+				res.status(200).json(book);
+			})
+			.catch(next);
+	})
+	.delete((req, res, next) => {
+		const knexInstance = req.app.get('db');
+		WishService.deleteBook(knexInstance, req.params.id)
+			.then(() => {
+				return res.status(200);
+			})
+			.catch(next);
+	});
 
 module.exports = wishRouter;
