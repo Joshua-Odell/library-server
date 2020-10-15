@@ -8,7 +8,7 @@ const wishRouter = express.Router();
 const bodyParser = express.json();
 
 wishRouter
-	.route('/wish')
+	.route('/wish/:user')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		// this check is an uncessary placeholder for some data validation
@@ -33,7 +33,7 @@ wishRouter
 	});
 
 wishRouter
-	.route('/wish/:id')
+	.route('/wish/:user/:id')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		WishService.getBookById(knexInstance, req.params.id)

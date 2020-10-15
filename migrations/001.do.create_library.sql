@@ -15,5 +15,6 @@ CREATE TABLE library (
     author TEXT NOT NULL,
     genere genere_list NOT NULL,
     completed BOOLEAN DEFAULT false,
-    lent BOOLEAN DEFAULT false
+    lent BOOLEAN DEFAULT false,
+    user INTEGER NULL
 ); 

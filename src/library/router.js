@@ -8,7 +8,7 @@ const libraryRouter = express.Router();
 const bodyParser = express.json();
 
 libraryRouter
-	.route('/library')
+	.route('/library/:user')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		// this check is an uncessary placeholder for some data validation
@@ -33,7 +33,7 @@ libraryRouter
 	});
 
 libraryRouter
-	.route('/library/:id')
+	.route('/library/:user/:id')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
 		LibraryService.getBookById(knexInstance, req.params.id)
