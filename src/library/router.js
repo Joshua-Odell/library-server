@@ -11,7 +11,6 @@ libraryRouter
 	.route('/library')
 	.get((req, res, next) => {
 		const knexInstance = req.app.get('db');
-		// this check is an uncessary placeholder for some data validation
 		if (!req) {
 			return res.status(400);
 		}
